@@ -1,0 +1,5 @@
+Spørgsmål: 
+1.hvorfor skifter vores summations tegn ikke den lower bound, når man går ind i en anden forløkke??
+2.hvorfor er teksten over den her ødelagt?
+3. hvad gør man med if-sætninger??
+4. Hvordan kan man reducere det her udtryk??

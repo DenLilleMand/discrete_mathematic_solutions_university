@@ -1,0 +1,227 @@
+\documentclass[12pt, a4paper, hidelinks]{article}
+
+% Packages:
+\usepackage{graphicx}                   % For figure includes
+\usepackage[T1]{fontenc}                % For mixing up \textsc{} with \textbf{}
+\usepackage[utf8]{inputenc}             % For scandinavian input characters(æøå)
+\usepackage{amsfonts, amsmath, amssymb} % For common mathsymbols and fonts
+\usepackage[danish]{babel}              % For danish titles \usepackage{hyperref}                   % For making links and refrences
+\usepackage{url}                        % Just because {~_^}
+\usepackage{array}                      % ...
+\usepackage[usenames, dvipsnames, svgnames, table]{xcolor}
+\usepackage{tabularx, colortbl}
+\usepackage{verbatim} % For entering code snippets.
+\usepackage{fancyvrb} % A "fancy" verbatim (for pseudo code).
+\usepackage{listings} % For boxed codesnippets, and file includes. (begin)
+\usepackage{lipsum}   % For generating dummy text at this demonstration
+\usepackage{float}
+
+% Basic layout:
+\setlength{\textwidth}{165mm}
+\setlength{\textheight}{240mm}
+\setlength{\parindent}{0mm}
+\setlength{\parskip}{\parsep}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{0mm}
+\setlength{\hoffset}{-2.5mm}
+\setlength{\voffset}{0mm}
+\setlength{\footskip}{15mm}
+\setlength{\oddsidemargin}{0mm}
+\setlength{\topmargin}{0mm}
+\setlength{\evensidemargin}{0mm}
+
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% Colors:
+\definecolor{KU-red}{RGB}{144, 26, 30}
+
+% Text Coloring:
+\newcommand{\green}[1]{\textbf{\color{green}{#1}}}
+\newcommand{\blue} [1]{\textbf{\color{blue} {#1}}}
+\newcommand{\red}  [1]{\textbf{\color{red}  {#1}}}
+
+
+% ************************* Start Document *****************
+\begin{document}
+
+% ************************* Page Header ********************
+\begin{minipage}[b]{1.0\linewidth}
+\includegraphics[height=30mm]{bilag/KULogo}
+
+\vspace*{-16ex}
+\begin{center}
+    {\Large \bf DMA} \vspace*{1ex} \\
+    {\large Ugeopgave 6} \vspace*{1ex} \\
+    {\large Matti Andreas Nielsen  } \\
+    {\large \today{}  }
+\end{center}
+\vspace*{-3pt}
+{\color{KU-red}\hrule}
+\end{minipage}
+\vspace{2ex}
+
+% **************** Assignment Starts Here ******************
+\tableofcontents \newpage
+
+\section{Del}
+$$ F_{0} = 0, F_{1} = 1, F_{n} = F_{n-1} + F_{n-2}  $$
+
+\subsection{}
+
+Basis step: 
+$$ F_{0} + F_{1} = 1 $$
+$$ 2^1 = 2 $$
+$$ 1 \leq 2   $$
+
+Induktions hypotese: $$ F_{n} \leq 2^n $$ \\
+
+Så vores base case holder\\
+
+Induktionstrin: \\
+Vi antager at $$ F_{n}(1) $$ er sandt, nu vil vi så vise at det også gælder for $$ F_{n}(n+1) $$ \\
+
+$$ F_{n+1} = F_{n} + F_{n-1} $$
+$$ 2^{n+1} = 2*2^n = 2^n+2^n  $$
+
+Fordi vores induktions hypotese siger at $$ F_{n} \leq 2^n $$ 
+og fordi at $$ F_{n-1} \leq F_{n} $$ kan vi
+opstille det følgende udtryk
+
+$$ f_{n} + f_{n-1} \leq 2^{n} + 2^{n} $$
+
+\subsection{}
+Vi vil gerne vise at det følgende er sandt
+$$ F_{n} \geq \frac{3}{2}^{n-1} \text{,} \forall n \in \langle 6, 7, 8, \ldots \rangle    $$
+ved hjælp af induktion.\\
+
+Basis step 
+$$ F_{6} = 8 $$
+$$ \frac{3}{2}^{6-1} = 7.59 $$
+$$ 8 \geq 7.59 $$
+
+Vi regner en til sådan at vi kan bruge stærk induktion
+$$ F_{7} = 21 $$
+$$ \frac{3}{2}^{7-1} = 16 $$
+$$ 21 \geq 16 $$
+
+grunden til at jeg er interesseret i at bruge stærk induktion, er at jeg så vil kunne antage at 
+$$ \forall n \in \langle 6, 7, 8, \ldots , n \rangle F_{n} \geq \frac{3}{2}^{n-1} \rightarrow F_{n+1} \geq \frac{3}{2}^{n}    $$
+i modsætning til svag induktion hvor jeg kun ville kunne antage at 
+$$ \exists{n} \in \langle 6,7,8, \ldots , n \rangle F_{n} \geq \frac{3}{2}^{n-1} \rightarrow F_{n+1} \geq \frac{3}{2}^{n}  $$ 
+
+Induktionshypotese eller induktionsantagelse er nu at   $$ F_{n} \geq \frac{3}{2}^{n-1} $$ og fordi at vi bruger stærk induktion
+kan vi også sige at $$ F_{n-1} \geq \frac{3}{2}^{n-2} $$ 
+
+Induktionstrin\\
+Det vi så gerne vil vide er om det også gælder for $$ n+1 $$ så
+vi indsætter dette i stedet for $$ n $$ så vores udtryk kommer til at se således ud
+$$ F_{n+1} = F_{n} + F_{n-1} $$
+$$ \frac{3}{2}^{(n+1)-1} = \frac{3}{2}^{n} $$
+
+Det vi så gerne vil bevise er at følgende udtryk 
+$$ F_{n} + F_{n-1} \geq \frac{3}{2}^{n} $$ 
+stadig væk holder.
+
+Ideen her, er så at finde et udtryk, som vi kan sætte imellem disse 2 udtryk. 
+Her kan vi gøre brug af at når man plusser to større størrelser sammen vil det stadig være 
+større end når man plusser to mindre størrelser sammen. Derfor kan vi sige at
+$$ F_{n} + F_{n-1} \geq \frac{3}{2}^{n-1} + \frac{3}{2}^{n-2} $$ vores mål er nu at placere vores 
+højre udtryk således $$  \frac{3}{2}^{n-1} + \frac{3}{2}^{n-2} \geq  \frac{3}{2}^{n} $$
+
+udtrykket
+$$  \frac{3}{2}^{n-1} + \frac{3}{2}^{n-2} $$ 
+kan man via sine potensregneregler omskrive til
+
+$$ \frac{3}{2}^{n} \frac{3}{2}^{-1} +  \frac{3}{2}^{n} \frac{3}{2}^{-2} $$
+
+Vi kan så trække $$ \frac{3}{2}^{n} $$ ud og får
+
+$$ \frac{3}{2}^{n} ( \frac{3}{2}^{-1} + \frac{3}{2}^{-2} ) $$
+
+som giver $$ \frac{3}{2}^{n} \frac{10}{9} $$
+
+Og her er det klart at når vi ganger en størrelse med et tal over 1, så vil det altid være større end
+det originale tal, så vi har derfor vist at
+
+$$ \frac{3}{2}^{n} \frac{10}{9} \geq \frac{3}{2}^{n} $$
+
+og at
+
+$$ F_{n} + F_{n-1} \geq \frac{3}{2}^{n-1} + \frac{3}{2}^{n-2} \geq \frac{3}{2}^{n} $$
+
+som koget ned kan skrives som præcis det vi gerne ville bevise med vores induktionstrin, nemlig at
+
+$$ F_{n} + F_{n-1} \geq \frac{3}{2}^{n} $$
+
+og dermed har vi også bevist at 
+$$  \forall n \in \langle 6, 7, 8, \ldots \rangle F_{n} \geq \frac{3}{2}^{n-1}  $$
+
+\subsection{}
+
+$$ \log{F_{n}} \leq \log{2^n} $$
+$$ \log{2^{n}} = n * \log{2} $$
+$$ n \leq \log{F_{n}} \leq n $$
+
+$$ \log{F_{n}} \leq \log{\frac{3}{2}^{n-1}} $$
+
+$$ (n-1) * \log{(\frac{3}{2})} \leq \log{F_{n}} \leq n * \log{2} $$
+
+jeg ved her at jeg skal bruge reglen S6 til at fjerne konstanterne og på en eller anden måde 
+skal jeg have fjernet -1 fra mit n, men jeg har ikke kunne lave opgaven helt færdig.
+
+\section{}
+\subsection{}
+Mul metoden laver heltals division af a og b, som returnere true hvis b går op i a, false hvis ikke og variablen y tæller hvor mange gange b går op i a.
+Desuden indeholder x variablen rest værdien af divisionen.
+
+Hvis vi kalder $$ Mul(6, 3) $$ vil når while loopet terminere returnere true, fordi x vil være 0, udover det er y=2  fordi 3 går op i 6 2 gange. \\
+$$ Mul(7, 3) $$ når while loopet terminere returnere false, fordi x vil være -1 hvor hvis man vender fortegnet om har man resten af divisionen, udover det vil y=3.\\
+$$ Mul(3, 7) $$ vil terminere med det samme og returnere false, så det viser at man ikke bare ville kunne returnere x som en rest, i det her tilfælde burde den jo være -4 men fordi vi aldrig hopper ind i løkken er x bare 3. \\
+$$ Mul(0, 7) $$ ville terminere med true.\\ 
+
+\subsection{}
+I $$ Mul(a, b) $$ er vores basis step at while løkken kører 0 gange, 
+for at få den til at kører 0 gange kan vi eventuelt håndkører algoritmen når vi eksekverer 
+algortimen med $$ Mul(1, 3) $$
+første gennemløb $$ x = 1, y = 0 $$ og hvis vi indsætter dette i vores funktion
+$$ x_{n} + by_{n} = a $$ får vi $$ 1 + 3 * 0 = 1 $$ som vi kan se passer det med at $$ a = 1 $$
+men en anden ting vi kan gøre som måske giver mere mening er at blot regne det med bogstaver 
+$$ x_{n} + by_{n} = a $$
+$$ x_{n} +by_{n} = x_{n} + by_{n} $$
+Første gennemløb, hvor $$ a = x_{n}, y_{n} =  0 $$ giver os
+$$ x_{n} + by_{n} = a + b * 0  $$
+$$ x_{n} + by_{n} = a $$
+dermed er vores basis case accepteret \\
+
+Induktionskridt \\
+Her kan vi ikke bare udskifte $$ n $$ med $$ n+1 $$ som vi er vant til, siden det kun 
+viser indexet i vores algoritme. Her skal vi ind og kigge på hvordan vores $$ x_{n}, y_{n}  $$ bliver ændret inde i vores 
+while løkke når vi kører en til iteration. Her kan vi så aflæse at
+$$ x_{n+1} = x_{n} - b $$
+$$ y_{n+1} = y_{n} + 1 $$
+
+Vi indsætter så $$ n+1 $$ i det oprindelige udtryk
+$$ x_{n+1} + by_{n+1} = a $$
+Vi udskifter udtrykene med dem ovenfor og får
+$$ x_{n} - b + b(y_{n} + 1) = a $$
+Vi ganger paranthesen ud
+$$ x_{n} - b + by_{n} + b = a $$
+De to b'er går ud med hinanden og vi får det oprindelige udtryk 
+$$ x_{n} + by_{n} = a $$
+
+\subsection{}
+Det første jeg gerne vil vise er at vores while løkke rent faktisk terminere, det er noget som skal være sandt 
+for at nogle af de andre muligheder kan gå i opfyldelse. 
+Vi får opstillet et krav til vores variabler, som er følgende:
+$$ a,b \in \mathbb{Z^+}  $$ vores while løkkes condition(tilstand?) består af $$ x >= b $$ og fordi at 
+både a og b er positive heltal samtidig med at vi for hver iteration trækker b fra x gælder det at  $$ \lim_{x \to 0} $$ imens b forbliver 
+den samme værdi, og vores while løkke vil dermed altid terminere.
+Man kan dele resten af vores cases op i 2 muligheder, vi har $$ a < b $$ som altid vil returnere false, fordi $$ b|a $$ aldrig vil være muligt.
+Den sidste case vi har er $$ a \geq b $$ som kan enten returnere true eller false, afhængigt af om $$ b|a $$ hvis dette er sandt, returnere vi TRUE, og hvis det er falskt 
+returnere vi false. Grunden til dette er at vi minusser b med a for hver eneste iteration, det betyder at hvis b ikke går op i a vil x aldrig blive 0, og dermed vil vi ikke returne true. 
+
+
+
+
+\end{document}

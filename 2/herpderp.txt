@@ -1,0 +1,2 @@
+n*(n+1)/2  -- kig på formelsamlingen, det her er det samme som (n-1) + (n-2) + (n-3) osv.
+og så er der en regel om at den her er O(n^2)
